@@ -27,10 +27,10 @@ io.on('connection', (socket) => {
 	});
 
 	// custom events start here
-	socket.on('createMessage', (message) => {
-		// console.log('createMessage', message);
+	socket.on('createMessage', (message, callback) => {
+		console.log('createMessage', message);
 		io.emit('newMessage', generateMessage(message.from, message.text));
-		// socket.broadcast.emit('newMessage', generateMessage(message.from, message.text));
+		callback('This is from the server');
 	});
 });
 
